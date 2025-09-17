@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combined JavaScript Exercises</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* This hides the paragraph for Exercise 4 and 5 initially */
+        #showMe, #toggleMe {
+            display: none;
+        }
+        /* New CSS for Exercise 6, 7, & 8 */
+        .highlight {
+            background-color: red;
+            color: black;
+            font-weight: bold;
+        }
+        /* CSS for Exercise 16 */
+        #panel {
+            padding: 50px;
+            background-color: lightgray;
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="demo">This is the original text for Exercise 1, which now has the 'highlight' class.</p>
+    <button id="removeHighlightButton">Remove Highlight</button>
+    <button id="btn">Toggle Highlight</button>
+
+    <hr>
+
+    <div id="box">
+        <h5>THIS IS A DIV for Exercise 2</h5>
+        <img src="https://www.google.com/imgres?q=flowers&imgurl=http%3A%2F%2Fecogardener.com%2Fcdn%2Fshop%2Farticles%2FBest_Spring_Flowers_For_Your_Garden-min.jpg%3Fv%3D1645075043&imgrefurl=https%3A%2F%2Fecogardener.com%2Fblogs%2Fnews%2Fbest-flowers-to-plant-for-spring%3Fsrsltid%3DAfmBOop1RVLXRq-iT5Gitvi4eOfndEJTbYa96WI37rwlAqwIJFjnFCGN&docid=zS_1G_Tg3dIQBM&tbnid=-oJ2d9nZrhf6OM&vet=12ahUKEwizwp6Bjd-PAxXOsFYBHcvXGKUQM3oECBQQAA..i&w=1400&h=933&hcb=2&ved=2ahUKEwizwp6Bjd-PAxXOsFYBHcvXGKUQM3oECBQQAA">
+    </div>
+
+    <hr>
+
+    <p id="hideMe">This paragraph will disappear when you click the "Hide" button.</p>
+    <button id="hideButton">Hide Paragraph</button>
+
+    <p id="showMe">This paragraph will appear when you click the "Show" button.</p>
+    <button id="showButton">Show Paragraph</button>
+
+    <hr>
+
+    <p id="toggleMe">This paragraph will toggle visibility on button click.</p>
+    <button id="toggleButton">Toggle Paragraph</button>
+
+    <hr>
+
+    <h5>Exercise 9: Change Image Source</h5>
+    <img id="myImg" src="https://via.placeholder.com/150/0000FF/FFFFFF?text=Original+Image" alt="A placeholder image.">
+    <button id="changeImageButton">Change Image</button>
+
+    <hr>
+
+    <h5>Exercise 10 & 11: Get & Set a Value</h5>
+    <p>Enter your name or click the button below.</p>
+    <input type="text" id="name" placeholder="Enter your name here">
+    <button id="getValueButton">Get Value</button>
+    <button id="setValueButton">Set Value</button>
+
+    <hr>
+
+    <h5>Exercise 12: Append Text</h5>
+    <p id="appendText">This is the original text.</p>
+    <button id="appendButton">Append Text</button>
+
+    <hr>
+
+    <h5>Exercise 13: Prepend Text</h5>
+    <p id="prependText">This is the original text.</p>
+    <button id="prependButton">Prepend Text</button>
+
+    <hr>
+
+    <h5>Exercise 14 & 15: Fade In & Out</h5>
+    <button id="fadeOutButton">Fade Out the DIV</button>
+    <button id="fadeInButton">Fade In the DIV</button>
+
+    <hr>
+
+    <h5>Exercise 16 & 17: Slide Up & Down</h5>
+    <button id="slideUpButton">Slide Up Panel</button>
+    <button id="slideDownButton">Slide Down Panel</button>
+    <div id="panel">This is the panel that will slide up and down.</div>
+
+    <hr>
+
+    <h5>Exercise 18: Change Multiple CSS Properties</h5>
+    <button id="multipleCssButton">Change Multiple CSS</button>
+
+    <hr>
+    
+    <h5>Exercise 19: Mouseover Event</h5>
+    <p>Hover your mouse over the text below to change its color.</p>
+    <p id="mouseoverText">Hover over me!</p>
+
+    <hr>
+    
+    <h5>Exercise 20: Click Event</h5>
+    <p id="clickText">Click on this text to change it!</p>
+
+    <script>
+        $(document).ready(function(){
+            // Exercise 1: Change Text of an Element
+            $("#demo").text("Hello jQuery!");
+
+            // Exercise 2: Change Background Color
+            $("#box").css("background-color", "lightblue");
+
+            // Exercise 3: Hide an Element
+            $("#hideButton").click(function(){
+                $("#hideMe").hide();
+            });
+
+            // Exercise 4: Show an Element
+            $("#showButton").click(function(){
+                $("#showMe").show();
+            });
+
+            // Exercise 5: Toggle Visibility
+            $("#toggleButton").click(function(){
+                $("#toggleMe").toggle();
+            });
+
+            // Exercise 6: Add a Class (done by button click now)
+            // Exercise 7: Remove a Class
+            // Exercise 8: Toggle a Class
+            $("#btn").click(function(){
+                $("#demo").toggleClass("highlight");
+            });
+
+            // Exercise 9: Change an Attribute
+            $("#changeImageButton").click(function(){
+                // This line changes the 'src' attribute of the image
+                $("#myImg").attr("src", "https://via.placeholder.com/150/FF0000/FFFFFF?text=New+Image");
+            });
+
+            // Exercise 10: Get a Value
+            $("#getValueButton").click(function(){
+                let val = $("#name").val();
+                console.log(val);
+            });
+
+            // Exercise 11: Set a Value
+            $("#setValueButton").click(function(){
+                $("#name").val("John Doe");
+            });
+            
+            // Exercise 12: Append Text
+            $("#appendButton").click(function(){
+                $("#appendText").append(" Extra text!");
+            });
+
+            // Exercise 13: Prepend Text
+            $("#prependButton").click(function(){
+                $("#prependText").prepend("Start ");
+            });
+
+            // Exercise 14: Fade Out an Element
+            $("#fadeOutButton").click(function(){
+                $("#box").fadeOut();
+            });
+            
+            // Exercise 15: Fade In an Element
+            $("#fadeInButton").click(function(){
+                $("#box").fadeIn();
+            });
+            
+            // Exercise 16: Slide Up an Element
+            $("#slideUpButton").click(function(){
+                $("#panel").slideUp();
+            });
+
+            // Exercise 17: Slide Down an Element
+            $("#slideDownButton").click(function(){
+                $("#panel").slideDown();
+            });
+
+            // Exercise 18: Change Multiple CSS Properties
+            $("#multipleCssButton").click(function(){
+                $("#demo").css({ 
+                    "color": "white", 
+                    "background-color": "black" 
+                });
+            });
+
+            // Exercise 19: Mouseover Event
+            $("#mouseoverText").mouseover(function(){
+                $(this).css("color", "blue");
+            });
+            
+            // Exercise 20: Click Event
+            $("#clickText").click(function(){
+                $(this).text("You clicked me!");
+            });
+        });
+    </script>
+
+</body>
+</html>
