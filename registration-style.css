@@ -1,0 +1,96 @@
+input {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: darkblue;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f4f6f9;
+}
+
+.login-box {
+  width: 400px;
+  padding: 40px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgb(0, 0, 0);
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.radio-group, .checkbox-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+  align-items: center;
+}
+.radio-group label, .checkbox-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+input[type="radio"], input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  accent-color: #007BFF;
+}
+
+textarea#bio {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  font-family: inherit;
+  font-size: 1rem;
+  min-height: 100px;
+}
+#bioCount {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: right;
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+#togglePassword, #toggleConfirmPassword {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  color: #007BFF;
+  margin-top: -12px;
+  font-size: 0.9em;
+}
+
+#togglePassword:hover, #toggleConfirmPassword:hover {
+  text-decoration: underline;
+}

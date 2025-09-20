@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> jQuery Live Character Count </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+
+    <textarea id="bio" maxlength="100"></textarea>
+    <p id="count"> 0/100 </p>
+
+    <script>
+      $("#bio").on("input", function () {
+        $("#count").text($(this).val().length + "/100");
+      });
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Validate Empty Fields with jQuery </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+
+    <form id="login">
+      <input type="text" id="user" placeholder="Username" /><br />
+      <input type="password" id="pass" placeholder="Password" /><br />
+      <button type="submit"> Login </button>
+    </form>
+
+    <script>
+      $("#login").submit(function (e) {
+        e.preventDefault();
+        if ($("#user").val() === "" || $("#pass").val() === "") {
+          alert("Please fill in all field my friend");
+        } else {
+          alert("Login Successful my friend!");
+        }
+      });
+    </script>
+
+  </body>
+</html>

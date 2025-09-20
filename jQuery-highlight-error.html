@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Add CSS Highlight for Errors (with jQuery) </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      .error {
+        border: 2px solid red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <form id="formCheck">
+      <input type="text" id="name" placeholder="Name" />
+      <button type="submit"> Submit </button>
+    </form>
+
+    <script>
+      $("#formCheck").submit(function (e) {
+        e.preventDefault();
+        if ($("#name").val() === "") {
+          $("#name").addClass("error");
+        } else {
+          $("#name").removeClass("error");
+          alert("Form submitted my friend!");
+        }
+      });
+    </script>
+
+  </body>
+</html>

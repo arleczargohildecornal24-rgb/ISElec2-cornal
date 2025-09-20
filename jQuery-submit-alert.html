@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> jQuery Version of Submit Alert </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+
+    <form id="myForm">
+      <input type="text" required />
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      $("#myForm").submit(function (event) {
+        event.preventDefault();
+        alert("Form submitted with jQuery my friend!");
+      });
+    </script>
+    
+  </body>
+</html>

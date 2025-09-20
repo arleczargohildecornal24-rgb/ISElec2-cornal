@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Registration Form </title>
+    <link rel="stylesheet" href="registration-style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+
+    <div class="login-box">
+        <h2> Registration Form </h2>
+
+        <hr>
+
+        <form id="registrationForm">
+            <label for="username"> Username </label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" required>
+
+            <label for="email"> Email </label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="password"> Password </label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <span id="togglePassword">Show Password</span>
+
+            <label for="confirmPassword"> Confirm Password </label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+            <span id="toggleConfirmPassword">Show Password</span>
+
+            <hr>
+
+            <label> Gender: </label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="gender" value="male"> Male
+              </label>
+              <label>
+                <input type="radio" name="gender" value="female"> Female
+              </label>
+            </div>
+
+            <hr>
+
+            <label> Interests </label>
+            <div class="checkbox-group">
+              <label>
+                Gaming <input type="checkbox" id="interestGaming" name="interests" value="Gaming" />
+              </label>
+              <label>
+                Vibe Coding <input type="checkbox" id="interestVibeCoding" name="interests" value="Vibe Coding" />
+              </label>
+              <label>
+                Music <input type="checkbox" id="interestMusic" name="interests" value="Music" />
+              </label>
+            </div>
+
+            <hr>
+
+            <label for="bio"> Bio (Max 200 characters) </label>
+            <textarea id="bio" name="bio" rows="4" maxlength="200"></textarea>
+            <div id="bioCount">0 / 200 Characters</div>
+
+            <button type="submit"> Register </button>
+        </form>
+
+        <script>
+          $(document).ready(function(){
+            $("#bio").on("input", function(){
+              const max = 200;
+              const currentLength = $(this).val().length;
+              $("#bioCount").text(`${currentLength} / ${max} characters`);
+            });
+
+            $("#togglePassword").click(function(){
+              const pwd = $("#password");
+              const type = pwd.attr("type") === "password" ? "text" : "password";
+              pwd.attr("type", type);
+              $(this).text(type === "password" ? "Show Password" : "Hide Password");
+            });
+
+            $("#toggleConfirmPassword").click(function(){
+              const pwd = $("#confirmPassword");
+              const type = pwd.attr("type") === "password" ? "text" : "password";
+              pwd.attr("type", type);
+              $(this).text(type === "password" ? "Show Password" : "Hide Password");
+            });
+
+            $("#registrationForm").submit(function(e){
+              e.preventDefault();
+
+              $("input, textarea").removeClass("error");
+
+              let isValid = true;
+              let errorMessages = [];
+
+              if ($("#username").val().trim() === "") {
+                isValid = false;
+                $("#username").addClass("error");
+                errorMessages.push("Username is required my friend.");
+              }
+
+              const emailVal = $("#email").val().trim();
+              if (emailVal === ""){
+                isValid = false;
+                $("#email").addClass("error");
+                errorMessages.push("Email format is invalid my friend.")
+              } else {  
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailVal)){
+                  isValid = false;
+                  $("#email").addClass("error");
+                  errorMessages.push("Email format is invalid my friend.");
+                }
+              }
+
+              const passwordVal = $("#password").val();
+              if (passwordVal.trim() === ""){
+                isValid = false;
+                $("#password").addClass("error");
+                errorMessages.push("Password is required my friend.");
+              }
+
+              const confirmPasswordVal = $("#confirmPassword").val();
+              if (confirmPasswordVal.trim() === ""){
+                isValid = false;
+                $("#confirmPassword").addClass("error");
+                errorMessages.push("Confirm Password is required my friend.");
+              } else if (passwordVal.trim() !== confirmPasswordVal.trim()){
+                isValid = false;
+                errorMessages.push("Passwords do not match, my friend.");
+              }
+
+              if (!$("input[name='gender']:checked").val()){
+                isValid = false;
+                errorMessages.push("Please select your gender my friend.");
+              }
+
+              if ($("input[name='interests']:checked").length === 0){
+                isValid = false;
+                errorMessages.push("Please select at least one interest my friend.");
+              }
+
+              if (!isValid){
+                alert("Please fix the following errors:\n- " + errorMessages.join("\n- "));
+                return;
+              }
+
+              alert("Registration successful my Friend! Thank you, " + $("#username").val() + ".");
+
+              this.reset();
+              $("#bioCount").text("0 / 200 Characters");
+            });
+          });
+        </script>
+
+    </div>
+  </body>
+</html>
